@@ -16,9 +16,6 @@ class Car
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    private ?string $brand = null;
-
-    #[ORM\Column(length: 50)]
     private ?string $model = null;
 
     #[ORM\Column(length: 4)]
@@ -32,9 +29,6 @@ class Car
 
     #[ORM\Column(length: 6)]
     private ?string $price = null;
-
-    #[ORM\Column(length: 10)]
-    private ?string $fuel = null;
 
     #[ORM\Column(length: 50)]
     private ?string $gearbox = null;
@@ -51,6 +45,14 @@ class Car
     #[ORM\OneToMany(mappedBy: 'car_id', targetEntity: CarImage::class, orphanRemoval: true)]
     private Collection $carImages;
 
+    #[ORM\ManyToOne(inversedBy: 'car_id')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Brand $brand = null;
+
+    #[ORM\ManyToOne(inversedBy: 'car_id')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Fuel $fuel = null;
+
     public function __construct()
     {
         $this->carImages = new ArrayCollection();
@@ -61,17 +63,6 @@ class Car
         return $this->id;
     }
 
-    public function getBrand(): ?string
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(string $brand): static
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
 
     public function getModel(): ?string
     {
@@ -133,17 +124,6 @@ class Car
         return $this;
     }
 
-    public function getFuel(): ?string
-    {
-        return $this->fuel;
-    }
-
-    public function setFuel(string $fuel): static
-    {
-        $this->fuel = $fuel;
-
-        return $this;
-    }
 
     public function getGearbox(): ?string
     {
@@ -219,6 +199,30 @@ class Car
                 $carImage->setCarId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): static
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getFuel(): ?Fuel
+    {
+        return $this->fuel;
+    }
+
+    public function setFuel(?Fuel $fuel): static
+    {
+        $this->fuel = $fuel;
 
         return $this;
     }
