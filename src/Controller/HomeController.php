@@ -15,4 +15,18 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+    #[Route('/politique-de-confidentalite', name: 'cgu')]    
+    public function cgu(): Response
+    {
+        return $this->render('home/cgu.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+    #[Route('/mentions-legales', name: 'legals')]
+    public function legals(): Response
+    {
+        return $this->render('home/legals.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }
