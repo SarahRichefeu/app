@@ -23,4 +23,14 @@ class ServiceController extends AbstractController
             'controller_name' => 'ServiceController',
         ]);
     }
+
+
+    #[Route('/rachat', name: 'rachat')]
+    public function rachat(): Response
+    {
+        return $this->render('service/rachat.html.twig', [
+            'controller_name' => 'ServiceController',
+        ]);
+    }
+
 }
