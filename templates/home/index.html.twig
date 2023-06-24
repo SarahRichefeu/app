@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vincent Parrot Garage{% endblock %}
+
+
+{% block body %}
+
+
+    {% block content %}
+
+        {# -------------------- MAIN --------------------- #}
+        <div class="container">
+                <h1 class="text-center my-5 fs-2">Bienvenue sur le site du garage de<span class="text-primary-emphasis"> Vincent Parrot <span></h1>
+
+                {# -------------------- ABOUT --------------------- #}
+                <div class="row pt-4">
+                    <div class="col-4 garage-img">              
+                        <img src="{{ asset('assets/parrot.jpg') }}" alt="garage" class="img-fluid parrot" width="400">
+                    </div>
+                    <div class="col-8 p-4">
+                        <div id="about" class="card border-primary">
+                            <h2 class="text-center title mb-3">Vincent Parrot Garage</h2>  
+                            <p>Fondateur de l'entreprise Vincent Parrot Garage, Vincent est passionné d'automobiles depuis l'enfance. Son père mécanique lui a appris tous les rouages du métier dès le plus jeune âge. Tout naturellement, après avoir fait des études dans le millieu automobile et mécanique, <span class="text-primary-emphasis">il ouvre sa boîte en 2020</span>. Aujourd'hui, il est entouré d'une <span class="text-primary-emphasis">équipe passionnée et dévouée</span>.</p>
+                            <p>Confiez-nous vos projets ! Réparation, achat d'ancien véhicule, vente de véhicules, entretien ? N'hésitez pas !</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="buy">
+                                <img src="{{ asset('assets/money.png') }}" alt="Rachat">
+                                <p>Rachat de votre véhicules sans obligation d'achat</p>
+                            </div>
+                            <div class="fix">
+                                <img src="{{ asset('assets/entretien.png') }}" alt="Entretien">
+                                <p>Dépannage, entretien et réparation experte</p>
+                            </div>
+                            <div class="sell">
+                                <img src="{{ asset('assets/car.png') }}" alt="Vente">
+                                <p>Trouvez votre prochain véhicule ! Vente de véhicules d'occasions avec financement possible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {# -------------------- AVIS CLIENTS --------------------- #}
+
+                <div class="">
+                    <h2 class="text-center title my-4 text-primary" style="font-family:Montserrat">Les avis de nos clients</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0 fs-5">
+                            <p>Un bon commentaire</p>
+                            <footer class="blockquote-footer">Prénom Nom</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0 fs-5">
+                            <p>Un bon commentaire</p>
+                            <footer class="blockquote-footer">Prénom Nom</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0 fs-5">
+                            <p>Un bon commentaire</p>
+                            <footer class="blockquote-footer">Prénom Nom</footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <p><a href="#" type="button" class="btn btn-link">Voir tous les avis</a></p>
+                </div>
+
+
+        </div>
+    {% endblock %}
+
+
+{% endblock %}

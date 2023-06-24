@@ -1,0 +1,36 @@
+
+
+-------------------HOME-------------------
+
+p.text-center {
+    margin-bottom: 2vh;
+}
+
+.parrot {
+    -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
+
+
+#about {
+    height: fit-content;
+    padding: 2vh;
+    margin-bottom: 6vh;
+}
+
+.buy, .fix, .sell {
+    text-align: center;
+    width: 17vw;
+    margin-top: 5vh;
+}
+
+.card {
+    margin: 2vh 0;
+}
+
+
+------------------------- SERVICES -----------------------------
+
+ol li {
+    padding: 2rem;
+}
