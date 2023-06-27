@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ServiceController extends AbstractController
 {
-    #[Route('/entretien', name: 'service_entretien')]
+    #[Route('/entretien', name: 'entretien')]
     public function entretien(): Response
     {
         return $this->render('service/entretien.html.twig', [
