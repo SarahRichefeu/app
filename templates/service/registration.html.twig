@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vincent Parrot Garage - Entretien et dépannage{% endblock %}
+
+{% block body %}
+
+
+    {% block main %}
+        <section class="grey-card container my-5">
+            <h3 class="display-5 text-primary">Certificat d'immatriculation</h3>
+            <div class="row">
+                <div class="col-lg-7">
+                    <p>En tant que Parrot Garage, nous sommes en mesure de vous fournir le service de demande de carte d'immatriculation pour votre véhicule. Voici les étapes 
+                    générales impliquées dans ce processus :</p>
+                    <ol>
+                        <li class="p-3">Collecte des informations : Nous aurons besoin de certaines informations de votre part pour pouvoir effectuer la demande de carte d'immatriculation. 
+                        Cela peut inclure des documents tels que votre pièce d'identité, le certificat de vente du véhicule, le certificat de conformité (si nécessaire), le 
+                        justificatif de domicile, etc. Ces documents peuvent varier en fonction de votre pays et de ses exigences spécifiques.</li>
+                        <li class="p-3">Préparation des documents : Une fois que nous avons recueilli toutes les informations nécessaires, nous préparons les documents requis pour la demande 
+                        de carte d'immatriculation. Cela peut inclure des formulaires de demande spécifiques, des déclarations de conformité, des preuves de paiement des taxes et 
+                        des frais d'immatriculation, etc.</li>
+                        <li class="p-3">Soumission de la demande : Nous nous chargeons de soumettre la demande de carte d'immatriculation auprès des autorités compétentes. Cela peut être le 
+                        service des véhicules automobiles, le département des transports ou toute autre entité responsable de l'immatriculation des véhicules dans votre pays.</li>
+                        <li class="p-3">Suivi et gestion : Une fois la demande soumise, nous suivons son traitement et nous nous assurons de répondre à toute demande supplémentaire ou de 
+                        fournir des informations supplémentaires si nécessaire. Nous restons en contact avec les autorités compétentes jusqu'à l'obtention du certificat 
+                        d'immatriculation.</li>
+                    </ol>
+                    <p class="text-body-secondary">Veuillez noter que les exigences et les processus spécifiques peuvent varier en fonction de votre pays et de sa législation. Il est important de se conformer 
+                    aux lois et réglementations en vigueur dans votre juridiction.</p>
+                </div>
+                <div class="col-lg-5">
+                    <img src="{{ asset('assets/cartegrise.png') }}" alt="Carte grise" class="img-fluid">
+                </div>
+            </div>
+        </section>
+
+        <div class="w-75 m-auto">
+            <p class="alert alert-dismissible alert-info p-3">N'hésitez pas à nous contacter directement pour discuter de vos besoins spécifiques en matière de carte d'immatriculation ou pour 
+            le contrôle technique de votre véhicule. Pour obtenir des informations précises sur les documents et les démarches requises dans votre pays.</p>
+        </div>
+
+        <section class="control container my-5">
+            <h3 class="display-5 text-primary">Le contrôle technique</h3>
+            <div class="row">
+                <div class="col-lg-5">
+                    <img src="{{ asset('assets/controle.png') }}" alt="Contrôle technique" class="img-fluid">
+                </div>
+                <div class="col-lg-7">
+                    <p>Bien sûr, chez Parrot Garage, nous proposons également le service de contrôle technique pour votre véhicule. Le contrôle technique est une étape 
+                    obligatoire dans de nombreux pays, visant à s'assurer que votre véhicule respecte les normes de sécurité et d'émissions en vigueur.</p>
+                    <p>Voici comment nous procédons lors d'un contrôle technique :</p>
+                    <ol>
+                        <li class="p-3">Prise de rendez-vous : Vous pouvez prendre rendez-vous avec notre équipe pour planifier le contrôle technique de votre véhicule. Nous 
+                        vous fournirons une date et une heure qui vous conviennent.</li>
+                        <li class="p-3">Inspection du véhicule : Lors du contrôle technique, notre équipe d'experts examine attentivement différents aspects de votre véhicule, 
+                        tels que les freins, les feux, les pneus, la direction, la suspension, les émissions, etc. L'objectif est de vérifier que le véhicule est sûr à conduire 
+                        et qu'il respecte les normes environnementales.</li>
+                        <li class="p-3">Rapport de contrôle : À l'issue de l'inspection, nous établissons un rapport détaillé sur l'état de votre véhicule. Ce rapport indique 
+                        les éventuels problèmes détectés et les réparations nécessaires pour se conformer aux normes. Si votre véhicule passe le contrôle technique sans 
+                        problème, un certificat de conformité vous sera délivré.</li>
+                        <li class="p-3">Réparations et suivi : Si des problèmes sont identifiés lors du contrôle technique, nous vous conseillerons sur les réparations 
+                        nécessaires pour mettre votre véhicule en conformité. Notre équipe de techniciens qualifiés peut effectuer les réparations requises et s'assurer que 
+                        votre véhicule est prêt à passer le contrôle technique avec succès..</li>
+                    </ol>
+                    <p class="text-body-secondary">Il est important de noter que les exigences en matière de contrôle technique peuvent varier d'un pays à l'autre. Les fréquences et les critères 
+                    spécifiques diffèrent également. Nous vous recommandons de vous renseigner sur les exigences de votre pays ou de votre région afin de vous assurer de 
+                    respecter les échéances et les règles en vigueur.</p>
+                </div>
+            </div>
+        </section>
+
+
+    {% endblock %}
+
+
+{% endblock %}

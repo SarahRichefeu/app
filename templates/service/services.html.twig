@@ -1,75 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vincent Parrot Garage - Entretien et dépannage{% endblock %}
+{% block title %}Vincent Parrot Garage - Les prestations{% endblock %}
 
 {% block body %}
 
-
     {% block main %}
-        <section class="grey-card container my-5">
-            <h3 class="display-5 text-primary">Certificat d'immatriculation</h3>
-            <div class="row">
-                <div class="col-lg-7">
-                    <p>En tant que Parrot Garage, nous sommes en mesure de vous fournir le service de demande de carte d'immatriculation pour votre véhicule. Voici les étapes 
-                    générales impliquées dans ce processus :</p>
-                    <ol>
-                        <li class="p-3">Collecte des informations : Nous aurons besoin de certaines informations de votre part pour pouvoir effectuer la demande de carte d'immatriculation. 
-                        Cela peut inclure des documents tels que votre pièce d'identité, le certificat de vente du véhicule, le certificat de conformité (si nécessaire), le 
-                        justificatif de domicile, etc. Ces documents peuvent varier en fonction de votre pays et de ses exigences spécifiques.</li>
-                        <li class="p-3">Préparation des documents : Une fois que nous avons recueilli toutes les informations nécessaires, nous préparons les documents requis pour la demande 
-                        de carte d'immatriculation. Cela peut inclure des formulaires de demande spécifiques, des déclarations de conformité, des preuves de paiement des taxes et 
-                        des frais d'immatriculation, etc.</li>
-                        <li class="p-3">Soumission de la demande : Nous nous chargeons de soumettre la demande de carte d'immatriculation auprès des autorités compétentes. Cela peut être le 
-                        service des véhicules automobiles, le département des transports ou toute autre entité responsable de l'immatriculation des véhicules dans votre pays.</li>
-                        <li class="p-3">Suivi et gestion : Une fois la demande soumise, nous suivons son traitement et nous nous assurons de répondre à toute demande supplémentaire ou de 
-                        fournir des informations supplémentaires si nécessaire. Nous restons en contact avec les autorités compétentes jusqu'à l'obtention du certificat 
-                        d'immatriculation.</li>
-                    </ol>
-                    <p class="text-body-secondary">Veuillez noter que les exigences et les processus spécifiques peuvent varier en fonction de votre pays et de sa législation. Il est important de se conformer 
-                    aux lois et réglementations en vigueur dans votre juridiction.</p>
-                </div>
-                <div class="col-lg-5">
-                    <img src="{{ asset('assets/cartegrise.png') }}" alt="Carte grise" class="img-fluid">
-                </div>
-            </div>
-        </section>
+        <main class="container">
 
-        <div class="w-75 m-auto">
-            <p class="alert alert-dismissible alert-info p-3">N'hésitez pas à nous contacter directement pour discuter de vos besoins spécifiques en matière de carte d'immatriculation ou pour 
-            le contrôle technique de votre véhicule. Pour obtenir des informations précises sur les documents et les démarches requises dans votre pays.</p>
-        </div>
+            <section class="row mt-5">
+                <div class="col-lg-5 p-4">                
+                    <h4 class="text-primary">Parrot Garage vous propose l'entretien, la réparation et le dépannage pour tout véhicules, acheté chez nous ou pas.
+                    </h4>
+                    <p class="lead">Merci de nous contacter pour vos besoins d'entretien, de réparation et de dépannage de véhicules. Chez Parrot Garage, nous sommes heureux de pouvoir vous offrir 
+                    ces services, que vous ayez acheté votre véhicule chez nous ou non. Notre objectif est d'assurer la satisfaction de tous nos clients en leur fournissant un service de 
+                    qualité.</p>                
+                </div>
+                <img src="{{ asset('assets/pexels-artem-podrez-8986070.jpg') }}" alt="Garage" class="img-fluid p-4 col-lg-7">
+            </section>
 
-        <section class="control container my-5">
-            <h3 class="display-5 text-primary">Le contrôle technique</h3>
-            <div class="row">
-                <div class="col-lg-5">
-                    <img src="{{ asset('assets/controle.png') }}" alt="Contrôle technique" class="img-fluid">
+            <section>
+                <div class="row mt-5 card border-primary text-lg-center align-items-center m-auto">
+                    <p class="p-5">Que ce soit pour l'entretien régulier de votre véhicule, des réparations mécaniques ou des services de dépannage en cas de problème, notre 
+                    équipe de professionnels qualifiés est prête à vous aider. Nous disposons des compétences et de l'expertise nécessaires pour travailler sur différents 
+                    types de véhicules, quelle que soit leur marque ou leur modèle. Lorsque vous nous confiez votre véhicule, vous pouvez avoir l'assurance que nous utiliserons 
+                    des pièces de rechange de qualité, et que notre personnel effectuera les réparations avec soin et précision. Nous nous efforçons de maintenir des normes 
+                    élevées en matière de service à la clientèle et de satisfaction.
+                    </p>
                 </div>
-                <div class="col-lg-7">
-                    <p>Bien sûr, chez Parrot Garage, nous proposons également le service de contrôle technique pour votre véhicule. Le contrôle technique est une étape 
-                    obligatoire dans de nombreux pays, visant à s'assurer que votre véhicule respecte les normes de sécurité et d'émissions en vigueur.</p>
-                    <p>Voici comment nous procédons lors d'un contrôle technique :</p>
-                    <ol>
-                        <li class="p-3">Prise de rendez-vous : Vous pouvez prendre rendez-vous avec notre équipe pour planifier le contrôle technique de votre véhicule. Nous 
-                        vous fournirons une date et une heure qui vous conviennent.</li>
-                        <li class="p-3">Inspection du véhicule : Lors du contrôle technique, notre équipe d'experts examine attentivement différents aspects de votre véhicule, 
-                        tels que les freins, les feux, les pneus, la direction, la suspension, les émissions, etc. L'objectif est de vérifier que le véhicule est sûr à conduire 
-                        et qu'il respecte les normes environnementales.</li>
-                        <li class="p-3">Rapport de contrôle : À l'issue de l'inspection, nous établissons un rapport détaillé sur l'état de votre véhicule. Ce rapport indique 
-                        les éventuels problèmes détectés et les réparations nécessaires pour se conformer aux normes. Si votre véhicule passe le contrôle technique sans 
-                        problème, un certificat de conformité vous sera délivré.</li>
-                        <li class="p-3">Réparations et suivi : Si des problèmes sont identifiés lors du contrôle technique, nous vous conseillerons sur les réparations 
-                        nécessaires pour mettre votre véhicule en conformité. Notre équipe de techniciens qualifiés peut effectuer les réparations requises et s'assurer que 
-                        votre véhicule est prêt à passer le contrôle technique avec succès..</li>
-                    </ol>
-                    <p class="text-body-secondary">Il est important de noter que les exigences en matière de contrôle technique peuvent varier d'un pays à l'autre. Les fréquences et les critères 
-                    spécifiques diffèrent également. Nous vous recommandons de vous renseigner sur les exigences de votre pays ou de votre région afin de vous assurer de 
-                    respecter les échéances et les règles en vigueur.</p>
+                <div class="row mt-5 alert alert-info">
+                    <h5>N'hésitez pas à nous contacter pour prendre rendez-vous ou pour obtenir plus d'informations sur nos services. Que vous soyez un client fidèle ou que vous recherchiez 
+                    un nouveau garage de confiance, nous sommes là pour répondre à vos besoins d'entretien, de réparation et de dépannage automobile.</h5>
                 </div>
-            </div>
-        </section>
+            </section>
+            
+
+            <section class="row column-gap-4 mt-5 m-auto">  
+
+                <h3 class="text-center text-decoration-underline lh-lg">
+                    Découvrez nos prestations
+                    <a href="services/add">
+                        <i class="fa-solid fa-circle-plus" style="color: #1f9bcf;"></i>
+                    </a>
+                </h3>
+
+                {% for service in services %}
+                <div class="col-lg-3 col-md-5 card mb-3">
+                    <h3 class="card-header">{{ service.title }}</h3>
+                    <img src="{{ asset('uploads/' ~ service.image) }}" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                        <rect width="100%" height="100%" fill="#868e96"></rect>
+                    </img>
+                    <div class="card-body">
+                        <p class="card-text">{{ service.description }}</p>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Demander un devis</a>
+                        <a href={{"services/edit/"~ service.id}} class="card-link">
+                            <i class="fa-solid fa-pen-to-square" style="color: #f0ad4e;"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
 
 
+                </div>
+
+            </section>
+
+        </main>
     {% endblock %}
 
 

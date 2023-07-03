@@ -24,7 +24,7 @@ class Car
     #[ORM\Column(length: 10)]
     private ?string $mileage = null;
 
-    #[ORM\Column(length: 300, nullable: true)]
+    #[ORM\Column(length: 800, nullable: true)]
     private ?string $description = null;
 
     #[ORM\Column(length: 6)]

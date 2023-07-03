@@ -1,5 +1,5 @@
 <header class="container-fluid">
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-primary nav-underline" data-bs-theme="dark">
         <div class="container-fluid px-3">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('assets/logo.png') }}" alt="Logo" width="250" class="img-fluid">
@@ -19,8 +19,8 @@
                         </a>
                         <div id="nav-hover"></div>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ path('entretien') }}">Entretien & dépannage</a></li>
-                                <li><a class="dropdown-item" href="{{ path('services') }}">Carte grise & contrôle technique</a></li>
+                                <li><a class="dropdown-item" href="{{ path('services') }}">Les prestations</a></li>
+                                <li><a class="dropdown-item" href="{{ path('registration') }}">Carte grise & contrôle technique</a></li>
                                 <li><a class="dropdown-item" href="{{ path('rachat') }}">Rachat de véhicule</a></li>
                             </ul>
                     </li>
