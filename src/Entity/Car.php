@@ -42,7 +42,7 @@ class Car
     #[ORM\Column(length: 300, nullable: true)]
     private ?string $equipments = null;
 
-    #[ORM\OneToMany(mappedBy: 'car_id', targetEntity: CarImage::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'car', targetEntity: CarImage::class, orphanRemoval: true)]
     private Collection $carImages;
 
     #[ORM\ManyToOne(inversedBy: 'car_id')]
