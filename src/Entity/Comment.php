@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\PropertyInfo\Extractor\ConstructorArgumentTypeExtractorInterface;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
@@ -28,6 +29,11 @@ class Comment
 
     #[ORM\Column]
     private ?bool $approuved = null;
+
+
+    public function __construct() {
+        $this->dateAdded = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {

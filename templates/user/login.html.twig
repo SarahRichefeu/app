@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+    <div class="container w-75 m-auto">
+        <h1 class="text-center p-5 fs-4">Espace employé</h1>
+
+        <div class="form">
+            {{form_start(formView)}}
+            {{form_row(formView.email)}}
+            {{form_row(formView.password)}}
+            <button class="btn btn-primary btn-sm">Se connecter</button>
+            {{form_end(formView, {'render_rest': false})}}
+        </div>
+    </div>
+{% endblock %}
