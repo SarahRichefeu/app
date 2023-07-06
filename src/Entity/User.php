@@ -34,11 +34,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 30)]
     private ?string $lastname = null;
 
-    private UserPasswordHasherInterface $passwordHasher;
-
-    public function __construct(UserPasswordHasherInterface $passwordHasher) {
-        $this->passwordHasher = $passwordHasher;
-    }
 
     public function getId(): ?int
     {
@@ -96,7 +91,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): static
     {
-        $this->password = $this->passwordHasher->hashPassword($this, $password);
+        $this->password = $password;
 
         return $this;
     }
