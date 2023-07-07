@@ -59,17 +59,22 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findByRole(string $role): array
+    {
+        // The ResultSetMapping maps the SQL result to entities
+        $rsm = $this->createResultSetMappingBuilder('s');
+
+        $rawQuery = sprintf(
+            'SELECT %s
+            FROM user s 
+            WHERE JSON_CONTAINS(s.roles, :role, \'$\')',
+            $rsm->generateSelectClause()
+        );
+
+        $query = $this->getEntityManager()->createNativeQuery($rawQuery, $rsm);
+        $query->setParameter('role', sprintf('"%s"', $role));
+        return $query->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?User
 //    {

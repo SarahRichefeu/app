@@ -36,6 +36,7 @@
             </div>
             {% if app.user %}
             <div class="logout p-3">
+                <a href="{{ path('user') }}" class="btn btn-primary btn-sm">Administration</a>
                 <a href="{{ path('logout') }}" class="btn btn-danger btn-sm">Déconnexion</a>
             </div>
             {% endif %}
