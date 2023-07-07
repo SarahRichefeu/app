@@ -4,7 +4,6 @@
 
 {% block body %}
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12 m-5">
                 <h1 class="text-center">Nos voitures d'occasion</h1>
@@ -17,10 +16,7 @@
 
         {% for car in cars %}
             <div class="card col-lg-4 m-3">
-            {% for image in images %}
-                {% set carImage =  image.car == car.id  %}
-            <img src="{{ asset('uploads/'~ carImage) }}" class="card-img-top" alt="...">
-            {% endfor %}
+            <img src="{{ asset('uploads/peugeot3008.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ car.model }}</h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ car.brand.name }}</h6>

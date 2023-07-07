@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Car;
-use App\Entity\CarImage;
 use App\Form\CarType;
-use App\Repository\CarImageRepository;
 use App\Repository\CarRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,13 +13,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CatalogueController extends AbstractController
 {
     #[Route('/catalogue', name: 'catalogue')]
-    public function index(CarRepository $repository, CarImageRepository $imageRepository, CarImage $carImage): Response
+    public function index(CarRepository $repository): Response
     {
-
         return $this->render('catalogue/index.html.twig', [
             'controller_name' => 'CatalogueController',
             'cars' => $repository->findAll(),
-            'images' => $imageRepository->findAll()
         ]);
     }
 

@@ -16,7 +16,7 @@ class CarImage
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 
-    #[ORM\ManyToOne(inversedBy: 'carImages')]
+    #[ORM\ManyToOne(targetEntity: Car::class, inversedBy: 'carImages')]
     #[ORM\JoinColumn(nullable: false)]
     private ?car $car = null;
 
