@@ -19,11 +19,11 @@ class Fuel
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'fuel', targetEntity: car::class)]
-    private Collection $car_id;
+    private Collection $car;
 
     public function __construct()
     {
-        $this->car_id = new ArrayCollection();
+        $this->car = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -48,13 +48,13 @@ class Fuel
      */
     public function getCarId(): Collection
     {
-        return $this->car_id;
+        return $this->car;
     }
 
     public function addCarId(car $carId): static
     {
-        if (!$this->car_id->contains($carId)) {
-            $this->car_id->add($carId);
+        if (!$this->car->contains($carId)) {
+            $this->car->add($carId);
             $carId->setFuel($this);
         }
 
@@ -63,7 +63,7 @@ class Fuel
 
     public function removeCarId(car $carId): static
     {
-        if ($this->car_id->removeElement($carId)) {
+        if ($this->car->removeElement($carId)) {
             // set the owning side to null (unless already changed)
             if ($carId->getFuel() === $this) {
                 $carId->setFuel(null);

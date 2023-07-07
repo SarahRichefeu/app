@@ -18,7 +18,7 @@ class CarImage
 
     #[ORM\ManyToOne(inversedBy: 'carImages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?car $car_id = null;
+    private ?car $car = null;
 
     public function getId(): ?int
     {
@@ -39,12 +39,12 @@ class CarImage
 
     public function getCarId(): ?car
     {
-        return $this->car_id;
+        return $this->car;
     }
 
-    public function setCarId(?car $car_id): static
+    public function setCarId(?car $car): static
     {
-        $this->car_id = $car_id;
+        $this->car = $car;
 
         return $this;
     }

@@ -42,16 +42,15 @@ class Car
     #[ORM\Column(length: 300, nullable: true)]
     private ?string $equipments = null;
 
-    #[ORM\OneToMany(mappedBy: 'car_id', targetEntity: CarImage::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'car', targetEntity: CarImage::class, orphanRemoval: true)]
     private Collection $carImages;
 
-    #[ORM\ManyToOne(inversedBy: 'car_id')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Brand $brand = null;
-
-    #[ORM\ManyToOne(inversedBy: 'car_id')]
+    #[ORM\ManyToOne(inversedBy: 'car')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Fuel $fuel = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $picture = null;
 
     public function __construct()
     {
@@ -203,18 +202,6 @@ class Car
         return $this;
     }
 
-    public function getBrand(): ?Brand
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?Brand $brand): static
-    {
-        $this->brand = $brand;
-
-        return $this;
-    }
-
     public function getFuel(): ?Fuel
     {
         return $this->fuel;
@@ -223,6 +210,18 @@ class Car
     public function setFuel(?Fuel $fuel): static
     {
         $this->fuel = $fuel;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): static
+    {
+        $this->picture = $picture;
 
         return $this;
     }
