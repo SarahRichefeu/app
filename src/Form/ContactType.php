@@ -15,13 +15,14 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Lastname', TextType::class, [
+            ->add('lastname', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'placeholder' => 'Votre nom'
+                    'placeholder' => 'Votre nom',
+                    'required' => 'required',
                 ]
             ])
-            ->add('Firstname', TextType::class, [
+            ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
                     'placeholder' => 'Votre prénom'
@@ -51,6 +52,9 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id'   => 'post_item',
         ]);
     }
 }

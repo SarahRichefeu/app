@@ -19,7 +19,7 @@ use Symfony\Component\PasswordHasher\Hasher\PasswordHasherFactoryInterface;
 
         $admin = new User();
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setEmail('vincent.parrot@gmail.com');
+        $admin->setEmail('vincentparrot6@gmail.com');
         $admin->setPassword($this->passwordHasherFactory->getPasswordHasher(User::class)->hash('vincentParrot99'));
         $admin->setFirstname('Vincent');
         $admin->setLastname('Parrot');

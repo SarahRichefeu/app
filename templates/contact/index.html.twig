@@ -4,10 +4,14 @@
 
 {% block body %}
     <div class="container">
-        <h1>Contactez-nous !</h1>
-        <p>Nous vous répondrons dans les plus bref délais. A bientôt !</p>
-        {{ form_start(formView) }}
-        {{ form_rest(formView) }}
-        <input type="submit" value ="Envoyer" class="btn btn-primary btn-sm">
+        <div class="text-center">
+            <h1 class="m-3 text-center">Contactez-nous !</h1>
+            <p class="m-3 alert alert-info">Nous vous répondrons dans les plus bref délais. A bientôt !</p>
+        </div>
+        <div class="w-75 m-auto">
+            {{ form_start(formView) }}
+            {{ form_rest(formView) }}
+            <input type="submit" value ="Envoyer" class="btn btn-primary btn-sm">
+        </div>
     </div>
 {% endblock %}
