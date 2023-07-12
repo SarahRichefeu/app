@@ -24,7 +24,11 @@ class CatalogueController extends AbstractController
     }
 
     #[Route('catalogue/{id}', name:"car_show", requirements:['id' => '\d+'])]
-    public function show(Car $car): Response {
+    public function show(Car $car): Response 
+    {
+        
+
+
         return $this->render('catalogue/show.html.twig', [
             'car' => $car
         ]);

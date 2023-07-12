@@ -12,10 +12,11 @@
                 tranquillité d'esprit supplémentaire lors de l'achat de leur véhicule. Une garantie sur une voiture d'occasion est une promesse que nous faisons à nos clients 
                 selon laquelle nous nous engageons à prendre en charge certaines réparations ou problèmes qui pourraient survenir après l'achat.</p>
         </div>
-        
+        {% if app.user %}
         <div class="d-flex justify-content-end">
             <a href="{{ path('car_add') }}" class="btn btn-sm btn-primary">Nouvelle annonce</a>
         </div>
+        {% endif %}
 
         <div class=" d-flex justify-content-center">
         {% for car in cars %}
