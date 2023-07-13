@@ -52,6 +52,9 @@ class Car
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
 
+    #[ORM\Column(length: 100)]
+    private ?string $brand = null;
+
     public function __construct()
     {
         $this->carImages = new ArrayCollection();
@@ -222,6 +225,18 @@ class Car
     public function setPicture(string $picture): static
     {
         $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getBrand(): ?string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(string $brand): static
+    {
+        $this->brand = $brand;
 
         return $this;
     }

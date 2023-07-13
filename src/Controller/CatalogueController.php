@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Car;
 use App\Form\CarType;
 use App\Repository\CarRepository;
+use App\Repository\FuelRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,11 +16,12 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class CatalogueController extends AbstractController
 {
     #[Route('/catalogue', name: 'catalogue')]
-    public function index(CarRepository $repository): Response
+    public function index(CarRepository $repository, FuelRepository $fuelRepo): Response
     {
         return $this->render('catalogue/index.html.twig', [
             'controller_name' => 'CatalogueController',
             'cars' => $repository->findAll(),
+            'fuels' => $fuelRepo->findAll()
         ]);
     }
 
