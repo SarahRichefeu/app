@@ -16,7 +16,7 @@ class Comment
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column(length: 600)]
     private ?string $message = null;

@@ -38,52 +38,35 @@
                             </div>
                         </div>
                     </div>
+                    <div class="prestations text-center">
+                        <a href="{{ path('services') }}" class="btn btn-primary">Retouvez toutes nos prestations ici → </a>
+                    </div>
                 </div>
 
                 {# -------------------- AVIS CLIENTS --------------------- #}
 
-                <div class="">
+                <div class="mt-5">
                     <h2 class="text-center title my-4 text-primary" style="font-family:Montserrat">Les avis de nos clients</h2>
+                    <div class="comment text-center">
+                        <a href="{{ path('comment_add') }}" class="btn btn-outline-primary">Laissez nous votre avis !</a>
+                    </div>
+                    {% for comment in comments %}
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            {% for star in 1..5 %}
+                                <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                            {% endfor %}
                         </div>
                         <div class="card-body">
+                            <h6 class="card-subtitle text-muted">Publié le {{ comment.dateAdded|date('d/m/Y') }}</h6>
                             <blockquote class="blockquote mb-0 fs-5">
-                            <p>Un bon commentaire</p>
-                            <footer class="blockquote-footer">Prénom Nom</footer>
+                            <p>{{ comment.message }}</p>
+                            <footer class="blockquote-footer">{{ comment.name }}</footer>
                             </blockquote>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                        </div>
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0 fs-5">
-                            <p>Un bon commentaire</p>
-                            <footer class="blockquote-footer">Prénom Nom</footer>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                            <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
-                        </div>
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0 fs-5">
-                            <p>Un bon commentaire</p>
-                            <footer class="blockquote-footer">Prénom Nom</footer>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <p><a href="#" type="button" class="btn btn-link">Voir tous les avis</a></p>
+                    {% endfor %}
+                    <p><a href="{{ path('comment') }}" type="button" class="btn btn-link">Voir tous les avis</a></p>
                 </div>
 
 

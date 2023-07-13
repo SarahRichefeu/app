@@ -1,15 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tous les commentaires{% endblock %}
+{% block title %}Commentaires à approuver{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1 class="text-center m-5">Avis laissés par nos clients</h1>
+        <h1 class="text-center m-5">Liste des commentaires en attente de vérification.</h1>
         <div class="add d-flex justify-content-between">
+            <a href="/services" class="btn btn-link">Retour</a>
             <a href="{{ path('comment_add') }}" class="btn btn-primary">Ajouter un commentaire</a>
-            {% if app.user %}
-            <a href="{{ path('comment_approuve') }}" class="btn btn-link">Commentaires en attente</a>
-            {% endif %}
         </div>
         {% for comment in comments %}
         <div class="card">
@@ -24,6 +22,10 @@
                 <p>{{ comment.message }}</p>
                 <footer class="blockquote-footer">{{ comment.name }}</footer>
                 </blockquote>
+            </div>
+            <div class="card-footer">
+                <a href="{{ path('comment_approve', {'id': comment.id}) }}" class="btn btn-success">Approuver</a>
+                <a href="{{ path('comment_delete', {'id': comment.id}) }}" class="btn btn-danger">Supprimer</a> 
             </div>
         </div>
         {% endfor %}
