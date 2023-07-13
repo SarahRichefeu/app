@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les commentaires{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center m-5">Avis laissés par nos clients</h1>
+        <div class="add d-flex justify-content-between">
+            <a href="{{ path('comment_add') }}" class="btn btn-primary">Ajouter un commentaire</a>
+            {% if app.user %}
+            <a href="{{ path('comment_approuve') }}" class="btn btn-link">Commentaires en attente</a>
+            {% endif %}
+        </div>
+        {% for comment in comments %}
+        <div class="card">
+            <div class="card-header">
+                {% for star in 1..5 %}
+                    <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                {% endfor %}
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle text-muted">Publié le {{ comment.dateAdded|date('d/m/Y') }}</h6>
+                <blockquote class="blockquote mb-0 fs-5">
+                <p>{{ comment.message }}</p>
+                <footer class="blockquote-footer">{{ comment.name }}</footer>
+                </blockquote>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
