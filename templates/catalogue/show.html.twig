@@ -1,64 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Voitures d'occasion{% endblock %}
+{% block title %}Voitures d'occasion - {{car.brand }} {{ car.model }}{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1 class="text-center m-5">Découvrez notre {{ car.model }}</h1>
+        <h1 class="text-center m-5">Découvrez notre {{car.brand }} {{ car.model }}</h1>
 
-        <div>
-            <div class="card w-50 m-auto">
+        <div class="row">
+            <div class="card col-lg-6 m-auto">
                 <img src="{{ asset('uploads/' ~ car.picture) }}" class="card-img-top" alt="{{ car.model }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ car.model }}</h5>
+                        <h5 class="card-title">{{car.brand }} {{ car.model }}</h5>
                         <p class="card-text">{{ car.description }}</p>
                     </div>
             </div>
-            <div class="card d-flex w-75 mx-auto my-3">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+            <div class="row my-5 p-3 border-secondary col-lg-8 m-auto">
+                <div class="col-6">
+                    <h5 class="">Marque de la voiture</h5>
+                    <h6 class="mb-2 text-body-secondary">{{ car.brand }}</h6>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <div class="col-6">
+                    <h5 class="">Modèle de la voiture</h5>
+                    <h6 class="mb-2 text-body-secondary">{{ car.model }}</h6>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <div class="col-6">
+                    <h5 class="">Année de fabrication</h5>
+                    <h6 class="mb-2 text-body-secondary">{{ car.year }}</h6>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <div class="col-6">
+                    <h5 class="">Motorisation</h5>
+                    <h6 class="mb-2 text-body-secondary">{{ car.motor }}</h6>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <div class="col-6">
+                    <h5 class="">Carburant</h5>
+                    <h6 class="mb-2 text-body-secondary">{{ car.fuel.name }}</h6>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <div class="col-6">
+                    <h5 class="">Boîte de vitesse</h5>
+                    <h6 class="mb-2 text-body-secondary">{{ car.gearbox }}</h6>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                <div class="col-6">
+                    <h5 class="">Equipements</h5>
+                    <h6 class="mb-2 text-body-secondary">{{ car.equipments }}</h6>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                </div>
+            </div>
+
+
+            <div class="col-lg-6 my-5 mx-auto p-3">
+                <h2 class="text-center">Vous voulez plus d'infos sur cette annonce ? Contactez-nous</h2>
+                    {{ form_start(form) }}
+                    {{ form_row(form.lastname) }}
+                    {{ form_row(form.firstname) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.subject, {value : 'Annonce: ' ~ car.brand ~ car.model}) }}
+                    {{ form_row(form.message) }}
+                    <input type="submit" class="btn btn-primary btn-sm" value="Envoyer">
+                    {{ form_end(form) }}
             </div>
         </div>
     </div>
