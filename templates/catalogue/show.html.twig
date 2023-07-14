@@ -52,7 +52,7 @@
                     {{ form_row(form.lastname) }}
                     {{ form_row(form.firstname) }}
                     {{ form_row(form.email) }}
-                    {{ form_row(form.subject, {value : 'Annonce: ' ~ car.brand ~ car.model}) }}
+                    {{ form_row(form.subject, {value : 'Annonce n°' ~ car.id ~ ': ' ~ car.brand ~ ' ' ~ car.model }) }}
                     {{ form_row(form.message) }}
                     <input type="submit" class="btn btn-primary btn-sm" value="Envoyer">
                     {{ form_end(form) }}
