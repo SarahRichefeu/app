@@ -29,6 +29,17 @@ p.text-center {
 }
 
 
+@media screen and (max-width: 768px) {
+    .parrot {
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .buy, .fix, .sell {
+        width: 100%;
+    }
+}
+    
+
 ------------------------- SERVICES -----------------------------
 
 ol li {
