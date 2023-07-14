@@ -18,29 +18,36 @@
         </div>
         {% endif %}
 
-        <div class=" d-flex justify-content-center">
-        {% for car in cars %}
-            <div class="card m-3" style="max-width:350px">
-                <img src="{{ asset('uploads/' ~ car.picture) }}" class="card-img-top" alt="..." style="max-height: 250px">
-                <div class="card-body">
-                    <h5 class="card-title">{{ car.model }}</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Motorisation: {{ car.motor }}</li>
-                    <li class="list-group-item">{{ car.year }} - {{ car.mileage }} km.</li>
-                    <li class="list-group-item">{{ car.fuel.name }} - {{ car.gearbox }}</li>
-                    <li class="list-group-item">{{ car.equipments }}</li>
-                    <li class="list-group-item fs-4 text-info">{{ car.price }} euros.</li>
-                </ul>
-                <div class="card-body">
-                    <a href="{{ path('car_show', {'id': car.id}) }}" class="card-link">Voir plus</a>
-                    {% if app.user %}
-                    <a href="{{ path('car_edit', {'id': car.id}) }}" class="card-link">Modifier</a>
-                    <a href="{{ path('car_delete', {'id': car.id}) }}" class="card-link text-danger">Supprimer</a>
-                    {% endif %}
+        <div class="row">
+            {% include "partials/_filtre.html.twig" %}
+
+            <div class="col-lg-9">
+                <div class="row justify-content-evenly">
+                    {% for car in cars %}
+                    <div class="card col-lg-5 m-2">
+                        <img src="{{ asset('uploads/' ~ car.picture) }}" class="card-img-top" alt="..." style="height: 250px">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Motorisation: {{ car.motor }}</li>
+                                <li class="list-group-item">{{ car.year }} - {{ car.mileage }} km.</li>
+                                <li class="list-group-item">{{ car.fuel.name }} - {{ car.gearbox }}</li>
+                                <li class="list-group-item">{{ car.equipments }}</li>
+                                <li class="list-group-item fs-4 text-info">{{ car.price }} euros.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ path('car_show', {'id': car.id}) }}" class="card-link">Voir plus</a>
+                            {% if app.user %}
+                            <a href="{{ path('car_edit', {'id': car.id}) }}" class="card-link">Modifier</a>
+                            <a href="{{ path('car_delete', {'id': car.id}) }}" class="card-link text-danger">Supprimer</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-        {% endfor %}
-            </div>
+        </div>
+
     </div>
 {% endblock %}

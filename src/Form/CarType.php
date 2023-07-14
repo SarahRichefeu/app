@@ -20,6 +20,12 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('brand', TextType::class, [
+                'label' => 'Marque',
+                'attr' => [
+                    'placeholder' => 'Marque du véhicule'
+                ]
+            ])
             ->add('model', TextType::class, [
                 'label' => 'Modèle',
                 'attr' => [
