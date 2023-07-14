@@ -4,31 +4,60 @@ namespace App\Controller;
 
 use App\Entity\Car;
 use App\Form\CarType;
+use App\Form\ContactType;
 use App\Repository\CarRepository;
 use App\Repository\FuelRepository;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CatalogueController extends AbstractController
 {
+
     #[Route('/catalogue', name: 'catalogue')]
     public function index(CarRepository $repository, FuelRepository $fuelRepo): Response
     {
         return $this->render('catalogue/index.html.twig', [
             'controller_name' => 'CatalogueController',
             'cars' => $repository->findAll(),
-            'fuels' => $fuelRepo->findAll()
+            'fuels' => $fuelRepo->findAll(),
         ]);
     }
 
     #[Route('catalogue/{id}', name:"car_show", requirements:['id' => '\d+'])]
-    public function show(Car $car): Response {
+    public function show(Car $car, Request $request, MailerInterface $mailer): Response 
+    {
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+
+        $success = [];
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact = $form->getData(); 
+
+            $email = (new TemplatedEmail())
+                ->from('v.parrot@sarahrichefeu.fr')
+                ->to('v.parrot@sarahrichefeu.fr')    
+                ->subject($contact['subject'])
+                ->htmlTemplate('emails/contact.html.twig')
+                ->context([
+                    'contact' => $contact
+            ]);
+
+        $mailer->send($email);
+
+
+        return $this->redirectToRoute('catalogue');
+        }
+
         return $this->render('catalogue/show.html.twig', [
-            'car' => $car
+            'car' => $car,
+            'form' => $form->createView(),
         ]);
     }
 
