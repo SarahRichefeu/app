@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panel d'administration{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center mt-5">Panel d'administration</h1>
+
+        <div class="list d-flex flex-column m-auto" style="width: fit-content">
+            <div class="btn-group m-3">
+                <button type="button" class="btn btn-primary">Gestion des employés</button>
+                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{  path('user') }}">Liste des employés</a></li>
+                  <li><a class="dropdown-item" href="{{  path('new_user') }}">Ajout d'un employé</a></li>
+                </ul>
+            </div>
+            <div class="btn-group m-3">
+                <button type="button" class="btn btn-primary">Gestion des prestations</button>
+                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{  path('services') }}">Liste des prestations</a></li>
+                  <li><a class="dropdown-item" href="{{  path('services_add') }}">Ajout d'une prestation</a></li>
+                </ul>
+            </div>
+            <div class="btn-group m-3">
+                <button type="button" class="btn btn-primary">Gestion des annonces</button>
+                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{  path('catalogue') }}">Liste des annonces</a></li>
+                  <li><a class="dropdown-item" href="{{  path('car_add') }}">Ajout d'une annonce</a></li>
+                </ul>
+            </div>
+            <div class="btn-group m-3">
+                <button type="button" class="btn btn-primary">Gestion des commentaires</button>
+                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{{  path('comment') }}">Liste des commentaires</a></li>
+                  <li><a class="dropdown-item" href="{{  path('comment_add') }}">Ajout d'un commentaire</a></li>
+                  <li><a class="dropdown-item" href="{{  path('comment_verification') }}">Commentaires à approuver</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

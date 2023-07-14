@@ -1,0 +1,1 @@
+// Récupération de tous les noeuds nécessaires
