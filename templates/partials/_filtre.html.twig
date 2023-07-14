@@ -4,36 +4,36 @@
     <fieldset>
         <legend>Marque</legend>
         <select name="brand" id="brand">
-            <option value="allBrand">Toutes les marques</option>
+            <option value="all">Toutes les marques</option>
             {% for car in cars %}
-                <option value="{{car.brand ~ car.id }}">{{ car.brand }}</option>
+            <option value="{{car.brand}}">{{ car.brand }}</option>
             {% endfor %}
         </select>
     </fieldset>
 
     <fieldset>
         <legend>Boîte de vitesse</legend>
-        <div>
+        <div id="gear">
             <input type="radio" id="allGear" class="gear" value="all"
                     checked>
             <label for="allGear">Toutes les boîtes</label>
         </div>
         <div>
-            <input type="radio" id="manual" class="gear" value="manual">
+            <input type="radio" id="manual" class="gear" value="manuelle">
             <label for="manual">Manuelle</label>
         </div>
         <div>
-            <input type="radio" id="auto" class="gear" value="auto">
+            <input type="radio" id="auto" class="gear" value="automatique">
             <label for="auto">Automatique</label>
         </div>
     </fieldset>
 
     <fieldset>
         <legend>Carburant</legend>
-            <div>
-                <input type="radio" id="allFuel" class="fuel" value="all"
+            <div id="fuel">
+                <input type="radio" id="all" class="fuel" value="all"
                         checked>
-                <label for="allFuel">Tous les carburants</label>
+                <label for="all">Tous les carburants</label>
             </div>
             {% for fuel in fuels %}
             <div>
@@ -46,38 +46,38 @@
     <fieldset>
         <legend>Equipements</legend>
 
-        <div>
-          <input type="checkbox" id="GPS" class="equipments">
+        <div id="equipments">
+          <input type="checkbox" id="GPS" class="equipments" value="GPS">
           <label for="GPS">GPS</label>
         </div>
     
-        <div>
-          <input type="checkbox" id="clim" class="equipments">
+        <div id="equipments">
+          <input type="checkbox" id="clim" class="equipments" value="Climatisation">
           <label for="clim">Climatisation</label>
         </div>
 
-        <div>
-          <input type="checkbox" id="bluetooth" class="equipments">
+        <div id="equipments">
+          <input type="checkbox" id="bluetooth" class="equipments" value="Bluetooth">
           <label for="bluetooth">Bluetooth</label>
         </div>
 
-        <div>
-          <input type="checkbox" id="reversing-radar" class="equipments">
+        <div id="equipments">
+          <input type="checkbox" id="reversing-radar" class="equipments" value="Radar de recul">
           <label for="reversing-radar">Radar de recul</label>
         </div>
 
-        <div>
-          <input type="checkbox" id="reversing-camera" class="equipments">
-          <label for="reversing-camera">Camera de recul</label>
+        <div id="equipments">
+          <input type="checkbox" id="reversing-camera" class="equipments" value="Caméra de recul">
+          <label for="reversing-camera">Caméra de recul</label>
         </div>
 
-        <div>
-          <input type="checkbox" id="speed-regulator" class="equipments">
+        <div id="equipments">
+          <input type="checkbox" id="speed-regulator" class="equipments" value="Régulateur de vitesse">
           <label for="speed-regulator">Régulateur de vitesse</label>
         </div>
 
-        <div>
-          <input type="checkbox" id="sunroof" class="equipments">
+        <div id="equipments">
+          <input type="checkbox" id="sunroof" class="equipments" value="Toit ouvrant/panoramique">
           <label for="sunroof">Toit ouvrant/panoramique</label>
         </div>
     </fieldset>

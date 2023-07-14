@@ -22,7 +22,7 @@
             {% include "partials/_filtre.html.twig" %}
 
             <div class="col-lg-9">
-                <div class="row justify-content-evenly">
+                <div class="row justify-content-evenly" id="js-filter-results">
                     {% for car in cars %}
                     <div class="card col-lg-5 m-2">
                         <img src="{{ asset('uploads/' ~ car.picture) }}" class="card-img-top" alt="..." style="height: 250px">

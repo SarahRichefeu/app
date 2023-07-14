@@ -18,6 +18,14 @@ class CatalogueController extends AbstractController
     #[Route('/catalogue', name: 'catalogue')]
     public function index(CarRepository $repository, FuelRepository $fuelRepo): Response
     {
+        if (!isset($_POST['action'])) {
+            $html = $repository->searchCars($_POST);
+            $data = [
+                'html' => $html,
+            ];
+            return $this->json($data);
+        }
+
         return $this->render('catalogue/index.html.twig', [
             'controller_name' => 'CatalogueController',
             'cars' => $repository->findAll(),
