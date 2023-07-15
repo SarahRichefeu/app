@@ -27,13 +27,13 @@
                     <div class="cars card col-lg-5 m-2" id="card">
                         <img src="{{ asset('uploads/' ~ car.picture) }}" class="card-img-top" alt="..." style="height: 250px">
                         <div class="card-body">
-                            <h5 class="card-title" id="carBrand">{{ car.brand }} {{ car.model }}</h5>
+                            <h5 class="card-title" id="car-brand">{{ car.brand }} {{ car.model }}</h5>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">Motorisation: {{ car.motor }}</li>
                                 <li class="list-group-item">{{ car.year }} - {{ car.mileage }} km.</li>
                                 <li class="list-group-item" id="gearbox">Boîte de vitesse: {{ car.gearbox }}</li>
                                 <li class="list-group-item" id="fuel">{{ car.fuel.name }}</li>
-                                <li class="list-group-item">{{ car.equipments }}</li>
+                                <li class="list-group-item" id="equipments">{{ car.equipments }}</li>
                                 <li class="list-group-item fs-4 text-info" id="price">{{ car.price }} euros.</li>
                             </ul>
                         </div>

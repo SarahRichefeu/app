@@ -1,23 +1,38 @@
-// // Function for cars filter
-// function filterCars() {
-    
-    
-//     // Get cars title
-//     const carsTitle = cars.map(car => car.querySelector('#carBrand').textContent);
-    
-
-
-    
-    
-// }
-
-
-
-
 
 // --------------------------Search bar -------------------------------
 
+const searchBar = () => {
+    // get input value
+    const inputSearch = document.getElementById('search').value.toLowerCase();
 
+    //get all cars
+    const cars = document.querySelectorAll('#card');
+    cars.forEach( (car) => {
+        // get all data I need from cars
+        const carBrand = car.querySelector('#car-brand').textContent.toLowerCase();
+        const carGear = car.querySelector('#gearbox').textContent.toLowerCase();
+        const carFuel = car.querySelector('#fuel').textContent.toLowerCase();
+        const carEquipments = car.querySelector('#equipments').textContent.toLowerCase();
+
+        // Search filters
+        const brandFilter = carBrand.includes(inputSearch);
+        const gearFilter = carGear.includes(inputSearch);
+        const fuelFilter = carFuel.includes(inputSearch);
+        const equipmentsFilter = carEquipments.includes(inputSearch);
+        console.log(brandFilter, gearFilter, fuelFilter, equipmentsFilter);
+
+        // Show cars that match with search
+        if (brandFilter ||  gearFilter || fuelFilter || equipmentsFilter) {
+            car.style.display = 'block';
+        } else {
+            car.style.display = 'none';
+        }
+    });
+};
+
+document.getElementById('search').addEventListener('keyup', searchBar);
+
+// --------------------------Filter cars -------------------------------
 function filterCars() {
     // get all cars 
     const cars = document.querySelectorAll('#card');
