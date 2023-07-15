@@ -1,93 +1,54 @@
-<form action="" class="col-lg-3 p-3">
+<form action="" class="col-lg-3 col-sm-12 p-3">
     <h5><i class="fa-solid fa-filter" style="color: #1a1a1a;"></i>Filtres</h5>
 
-    <fieldset>
-        <legend>Marque</legend>
-        <select name="brand" id="brand">
-            <option value="allBrand">Toutes les marques</option>
-            {% for car in cars %}
-                <option value="{{car.brand ~ car.id }}">{{ car.brand }}</option>
-            {% endfor %}
-        </select>
-    </fieldset>
+    <div class="d-flex col-lg-12 p-3">
+        <input class="form-control me-sm-2" id="search" type="search" placeholder="Rechercher">
+        <button class="btn btn-secondary my-2 my-sm-0"><i class="fa-solid fa-magnifying-glass" style="color: #1a1a1a;"></i></button>
+    </div>
 
-    <fieldset>
-        <legend>Boîte de vitesse</legend>
-        <div>
-            <input type="radio" id="allGear" class="gear" value="all"
-                    checked>
-            <label for="allGear">Toutes les boîtes</label>
-        </div>
-        <div>
-            <input type="radio" id="manual" class="gear" value="manual">
-            <label for="manual">Manuelle</label>
-        </div>
-        <div>
-            <input type="radio" id="auto" class="gear" value="auto">
-            <label for="auto">Automatique</label>
-        </div>
-    </fieldset>
 
-    <fieldset>
-        <legend>Carburant</legend>
-            <div>
-                <input type="radio" id="allFuel" class="fuel" value="all"
-                        checked>
-                <label for="allFuel">Tous les carburants</label>
-            </div>
-            {% for fuel in fuels %}
-            <div>
-                <input type="radio" id="{{ fuel.id }}" class="fuel" value="{{ fuel.id }}">
-                <label for="{{ fuel.id }}">{{ fuel.name }}</label>
-            </div>
-            {% endfor %}
-    </fieldset>
+  <div class="buttons" id="buttons">
 
-    <fieldset>
-        <legend>Equipements</legend>
+      <div class="gearbox form-check" id="gearbox">
+        <h6 class="p-3">Boîtes de vitesses</h6>
+        <input class="form-check-input input-none" type="checkbox" value="manuelle"  id="manual" onclick="filterCars()">
+        <label class="badge rounded-pill" for="manual">
+          Manuelle
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="automatique"  id="auto" onclick="filterCars()">
+        <label class="badge rounded-pill" for="auto">
+          Automatique
+        </label>
+      </div>
 
-        <div>
-          <input type="checkbox" id="GPS" class="equipments">
-          <label for="GPS">GPS</label>
-        </div>
-    
-        <div>
-          <input type="checkbox" id="clim" class="equipments">
-          <label for="clim">Climatisation</label>
-        </div>
+      <div class="fuel form-check" id="fuel">
+        <h6 class="p-3">Carburants</h6>
+        <input class="form-check-input input-none" type="checkbox" value="essence"  id="essence" onclick="filterCars()">
+        <label class="badge rounded-pill" for="essence">
+          Essence
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="diesel"  id="diesel" onclick="filterCars()">
+        <label class="badge rounded-pill" for="diesel">
+          Diesel
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="electrique"  id="elec" onclick="filterCars()">
+        <label class="badge rounded-pill" for="elec">
+          Eléctrique
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="hybride"  id="hybrid" onclick="filterCars()">
+        <label class="badge rounded-pill" for="hybrid">
+          Hybride
+        </label>
+      </div>
 
-        <div>
-          <input type="checkbox" id="bluetooth" class="equipments">
-          <label for="bluetooth">Bluetooth</label>
-        </div>
+      <div class="form-check pt-5">
+        <input class="form-check-input input-none" type="checkbox" value="all"  id="all" onclick="filterCars()">
+        <label class="badge rounded-pill" for="all">
+          Réinitialiser
+        </label>
+      </div>
 
-        <div>
-          <input type="checkbox" id="reversing-radar" class="equipments">
-          <label for="reversing-radar">Radar de recul</label>
-        </div>
+  </div>
 
-        <div>
-          <input type="checkbox" id="reversing-camera" class="equipments">
-          <label for="reversing-camera">Camera de recul</label>
-        </div>
-
-        <div>
-          <input type="checkbox" id="speed-regulator" class="equipments">
-          <label for="speed-regulator">Régulateur de vitesse</label>
-        </div>
-
-        <div>
-          <input type="checkbox" id="sunroof" class="equipments">
-          <label for="sunroof">Toit ouvrant/panoramique</label>
-        </div>
-    </fieldset>
-
-    <fieldset>
-        <legend>Prix</legend>
-        <label for="minPrice">Prix min.</label>
-        <input type="number" class="price" id="minPrice">
-        <label for="maxPrice">Prix max.</label>
-        <input type="number" class="price" id="maxPrice">
-    </fieldset>
 
 </form>
