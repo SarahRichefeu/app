@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaires à approuver{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center m-5">Liste des commentaires en attente de vérification.</h1>
+        <div class="add d-flex justify-content-end">
+            <a href="{{ path('comment_add') }}" class="btn btn-primary">Ajouter un commentaire</a>
+        </div>
+        {% for comment in comments %}
+        <div class="card">
+            <div class="card-header">
+                {% for star in 1.. comment.note %}
+                    <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
+                {% endfor %}
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle text-muted">Publié le {{ comment.dateAdded|date('d/m/Y') }}</h6>
+                <blockquote class="blockquote mb-0 fs-5">
+                <p>{{ comment.message }}</p>
+                <footer class="blockquote-footer">{{ comment.name }}</footer>
+                </blockquote>
+            </div>
+            <div class="card-footer">
+                <a href="{{ path('comment_approve', {'id': comment.id}) }}" class="btn btn-success">Approuver</a>
+                <a href="{{ path('comment_delete', {'id': comment.id}) }}" class="btn btn-danger">Supprimer</a> 
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

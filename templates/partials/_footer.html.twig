@@ -1,0 +1,41 @@
+<footer class="container-fluid">
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 p-4 mt-5 border-top bg-primary" data-bs-theme="dark">
+        <div class="col mb-3 p-4">
+            <p class="text-body-secondary">© 2023</p>
+        </div>
+
+        <div class="col mb-3"></div>
+
+        <div class="col mb-3">
+            <p class="nav flex-column p-0 text-body-secondary">
+                Ouvert du lundi au vendredi de 8h à 12h et de 14h à 18h
+                  Le samedi de 8h à 12h 
+            </p>
+        </div>
+
+        <div class="col mb-3">
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2 p-0 text-body-secondary">07 33 01 02 03</li>
+                <li class="nav-item mb-2 p-0 text-body-secondary">33 avenue Saint Jean, 31000 Toulouse</li>
+            </ul>
+        </div>
+
+        <div class="col mb-3">
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Mentions légales</a></li>
+                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politique de confidentialité</a></li>
+            </ul>
+            {% if app.user == null %}
+            <div class="connexion">
+                <a href="/login" class="btn btn-outline-light btn-sm">Espace employé</a>
+            </div>
+            {% endif %}
+        </div>
+
+     </div>
+</footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        {% if controller_name == 'CatalogueController' %}
+        <script src="{{ asset('scripts/search.js') }}"></script>
+        {% endif %}

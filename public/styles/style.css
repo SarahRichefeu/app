@@ -1,0 +1,79 @@
+
+
+/* -------------------HOME------------------- */
+
+p.text-center {
+    margin-bottom: 2vh;
+}
+
+.parrot {
+    -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
+
+
+#about {
+    height: fit-content;
+    padding: 2vh;
+    margin-bottom: 6vh;
+}
+
+.buy, .fix, .sell {
+    text-align: center;
+    width: 17vw;
+    margin-top: 5vh;
+}
+
+.card {
+    margin: 2vh 0;
+}
+
+
+@media screen and (max-width: 768px) {
+    .parrot {
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .buy, .fix, .sell {
+        width: 100%;
+    }
+}
+    
+
+/* ------------------------- SERVICES ----------------------------- */
+
+ol li {
+    padding: 2rem;
+}
+
+/* -------------------------Filtres -------------------------------- */
+
+div#buttons .input-none {
+    opacity: 0;
+}
+
+div#buttons .input-none + label {
+    background-color: #1A1A1A;
+}
+
+div#buttons .input-none:checked + label {
+    background-color: #d9534f;
+}
+
+div#buttons label {
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label {
+    background-color: #d9534f;
+}
+
+
+@media screen and (max-width: 768px) {
+    div#buttons {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+}
+

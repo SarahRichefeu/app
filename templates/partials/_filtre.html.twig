@@ -1,0 +1,54 @@
+<form action="" class="col-lg-3 col-sm-12 p-3">
+    <h5><i class="fa-solid fa-filter" style="color: #1a1a1a;"></i>Filtres</h5>
+
+    <div class="d-flex col-lg-12 p-3">
+        <input class="form-control me-sm-2" id="search" type="search" placeholder="Rechercher">
+        <span class="btn btn-secondary my-2 my-sm-0"><i class="fa-solid fa-magnifying-glass" style="color: #1a1a1a;"></i></span>
+    </div>
+
+
+  <div class="buttons" id="buttons">
+
+      <div class="gearbox form-check" id="gearbox">
+        <h6 class="p-3">Boîtes de vitesses</h6>
+        <input class="form-check-input input-none" type="checkbox" value="manuelle"  id="manual" onclick="filterCars()">
+        <label class="badge rounded-pill" for="manual">
+          Manuelle
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="automatique"  id="auto" onclick="filterCars()">
+        <label class="badge rounded-pill" for="auto">
+          Automatique
+        </label>
+      </div>
+
+      <div class="fuel form-check" id="fuel">
+        <h6 class="p-3">Carburants</h6>
+        <input class="form-check-input input-none" type="checkbox" value="essence"  id="essence" onclick="filterCars()">
+        <label class="badge rounded-pill" for="essence">
+          Essence
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="diesel"  id="diesel" onclick="filterCars()">
+        <label class="badge rounded-pill" for="diesel">
+          Diesel
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="electrique"  id="elec" onclick="filterCars()">
+        <label class="badge rounded-pill" for="elec">
+          Eléctrique
+        </label>
+        <input class="form-check-input input-none" type="checkbox" value="hybride"  id="hybrid" onclick="filterCars()">
+        <label class="badge rounded-pill" for="hybrid">
+          Hybride
+        </label>
+      </div>
+
+      <div class="form-check pt-5">
+        <input class="form-check-input input-none" type="checkbox" value="all"  id="all" onclick="filterCars()">
+        <label class="badge rounded-pill" for="all">
+          Réinitialiser
+        </label>
+      </div>
+
+  </div>
+
+
+</form>

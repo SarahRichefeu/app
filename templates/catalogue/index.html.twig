@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voitures d'occasion{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 mt-5">
+                <h1 class="text-center">Nos voitures d'occasion</h1>
+                <p class="card text-white bg-primary mb-3 p-4">Chez Parrot Garage, nous proposons la vente de voitures d'occasion avec garantie pour offrir à nos clients une 
+                tranquillité d'esprit supplémentaire lors de l'achat de leur véhicule. Une garantie sur une voiture d'occasion est une promesse que nous faisons à nos clients 
+                selon laquelle nous nous engageons à prendre en charge certaines réparations ou problèmes qui pourraient survenir après l'achat.</p>
+        </div>
+        {% if app.user %}
+        <div class="d-flex justify-content-end">
+            <a href="{{ path('car_add') }}" class="btn btn-sm btn-primary">Nouvelle annonce</a>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            {% include "partials/_filtre.html.twig" %}
+
+            <div class="col-lg-9">
+                <div class="row justify-content-evenly">
+                    {% for car in cars %}
+                    <div class="cars card col-lg-5 m-2" id="card">
+                        <img src="{{ asset('uploads/' ~ car.picture) }}" class="card-img-top" alt="..." style="height: 250px">
+                        <div class="card-body">
+                            <h5 class="card-title" id="car-brand">{{ car.brand }} {{ car.model }}</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Motorisation: {{ car.motor }}</li>
+                                <li class="list-group-item">{{ car.year }} - {{ car.mileage }} km.</li>
+                                <li class="list-group-item" id="gearbox">Boîte de vitesse: {{ car.gearbox }}</li>
+                                <li class="list-group-item" id="fuel">{{ car.fuel.name }}</li>
+                                <li class="list-group-item" id="equipments">{{ car.equipments }}</li>
+                                <li class="list-group-item fs-4 text-info" id="price">{{ car.price }} euros.</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{{ path('car_show', {'id': car.id}) }}" class="card-link">Voir plus</a>
+                            {% if app.user %}
+                            <a href="{{ path('car_edit', {'id': car.id}) }}" class="card-link">Modifier</a>
+                            <a href="{{ path('car_delete', {'id': car.id}) }}" class="card-link text-danger">Supprimer</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
