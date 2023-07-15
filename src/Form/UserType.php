@@ -64,7 +64,7 @@ class UserType extends AbstractType
                         'message' => 'Veuillez saisir votre mot de passe',
                     ]),
                     new PasswordStrength([
-                        'message' => 'Le mot de passe est trop faible. Veillez à utiliser au moins 8 caractères dont 1 chiffre.',
+                        'message' => 'Le mot de passe est trop faible.',
                     ])
                 ],
             ])

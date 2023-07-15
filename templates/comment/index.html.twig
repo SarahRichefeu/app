@@ -8,13 +8,13 @@
         <div class="add d-flex justify-content-between">
             <a href="{{ path('comment_add') }}" class="btn btn-primary">Ajouter un commentaire</a>
             {% if app.user %}
-            <a href="{{ path('comment_approuve') }}" class="btn btn-link">Commentaires en attente</a>
+            <a href="{{ path('comment_verification') }}" class="btn btn-link">Commentaires en attente</a>
             {% endif %}
         </div>
         {% for comment in comments %}
         <div class="card">
             <div class="card-header">
-                {% for star in 1..5 %}
+                {% for star in 1.. comment.note %}
                     <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
                 {% endfor %}
             </div>

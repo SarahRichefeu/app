@@ -53,7 +53,7 @@
                     {% for comment in comments %}
                     <div class="card">
                         <div class="card-header">
-                            {% for star in 1..5 %}
+                            {% for star in 1.. comment.note %}
                                 <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
                             {% endfor %}
                         </div>

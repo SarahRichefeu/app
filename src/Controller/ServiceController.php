@@ -89,7 +89,7 @@ class ServiceController extends AbstractController
             }
 
             $repo->save($service, true);
-            return $this->redirectToRoute('service');
+            return $this->redirectToRoute('services');
         }
 
         return $this->render('service/service_form.html.twig', [

@@ -56,6 +56,7 @@ class CatalogueController extends AbstractController
         }
 
         return $this->render('catalogue/show.html.twig', [
+            'controller_name' => 'CatalogueShow',
             'car' => $car,
             'form' => $form->createView(),
         ]);
@@ -99,6 +100,7 @@ class CatalogueController extends AbstractController
         $btn = 'Ajouter';
 
         return $this->render('catalogue/form.html.twig', [
+            'controller_name' => 'CatalogueAdd',
             'formCar' => $formCar->createView(),
             'title' => $title, 
             'btn' => $btn
@@ -139,6 +141,7 @@ class CatalogueController extends AbstractController
         $title = 'Modifier une annonce';
         $btn = "Modifier";
         return $this->render('catalogue/form.html.twig', [
+            'controller_name' => 'CatalogueEdit',
             'formCar' => $formCar->createView(),
             'title' => $title,
             'btn' => $btn

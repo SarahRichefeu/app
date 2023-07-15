@@ -38,6 +38,7 @@ class CommentController extends AbstractController
         }
 
         return $this->render('comment/form.html.twig', [
+            'controller_name' => 'CommentNew',
             'form' => $form->createView()
         ]);
     }
@@ -48,6 +49,7 @@ class CommentController extends AbstractController
         $comments = $repo->findBy(['approuved' => false]);
 
         return $this->render('comment/verification.html.twig', [
+            'controller_name' => 'CommentVerification',
             'comments' => $comments
         ]);
     }

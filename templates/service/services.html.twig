@@ -38,9 +38,11 @@
 
                 <h3 class="text-center text-decoration-underline lh-lg">
                     Découvrez nos prestations
+                    {% if app.user %}
                     <a href="services/add">
                         <i class="fa-solid fa-circle-plus" style="color: #1f9bcf;"></i>
                     </a>
+                    {% endif %}
                 </h3>
 
                 {% for service in services %}
@@ -55,7 +57,9 @@
                     <div class="card-body">
                         <a href="#" class="card-link">Demander un devis</a>
                         <a href={{"services/edit/"~ service.id}} class="card-link">
+                            {% if app.user %}
                             <i class="fa-solid fa-pen-to-square" style="color: #f0ad4e;"></i>
+                            {% endif %}
                         </a>
                     </div>
                 </div>

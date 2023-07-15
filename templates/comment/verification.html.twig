@@ -5,14 +5,13 @@
 {% block body %}
     <div class="container">
         <h1 class="text-center m-5">Liste des commentaires en attente de vérification.</h1>
-        <div class="add d-flex justify-content-between">
-            <a href="/services" class="btn btn-link">Retour</a>
+        <div class="add d-flex justify-content-end">
             <a href="{{ path('comment_add') }}" class="btn btn-primary">Ajouter un commentaire</a>
         </div>
         {% for comment in comments %}
         <div class="card">
             <div class="card-header">
-                {% for star in 1..5 %}
+                {% for star in 1.. comment.note %}
                     <i class="fa-solid fa-star" style="color: #f7ad2b;"></i>
                 {% endfor %}
             </div>
