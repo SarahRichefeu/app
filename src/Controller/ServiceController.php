@@ -27,6 +27,7 @@ class ServiceController extends AbstractController
     #[Route('/services/edit/{id}', name: 'services_edit', requirements: ['id' => '\d+'])]
     public function editServices(Request $request, Service $service, ServiceRepository $repo, SluggerInterface $slugger): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,6 +64,7 @@ class ServiceController extends AbstractController
     #[Route('/services/add', name: 'services_add')]
     public function addServices(Request $request, ServiceRepository $repo, SluggerInterface $slugger): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $service = new Service();
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);

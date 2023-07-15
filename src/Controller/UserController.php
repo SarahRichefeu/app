@@ -16,6 +16,7 @@ class UserController extends AbstractController
     #[Route('/user', name: 'user')]
     public function index(UserRepository $repo): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('user/index.html.twig', [
             'controller_name' => 'userController',
             'users' => $repo->findByRole('ROLE_USER')
@@ -25,6 +26,7 @@ class UserController extends AbstractController
     #[Route('/user/new', name: 'new_user')]
     public function new(Request $request, UserRepository $repo, UserPasswordHasherInterface $passwordHasher): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -48,6 +50,7 @@ class UserController extends AbstractController
     #[Route('/user/edit/{id}', name: 'edit_user', requirements: ['id' => '\d+'])]
     public function edit(Request $request, User $user, UserRepository $repo): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -68,6 +71,7 @@ class UserController extends AbstractController
     #[Route('/user/delete/{id}', name: 'delete_user', requirements: ['id' => '\d+'])]
     public function delete(User $user, UserRepository $repo): Response 
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $repo->remove($user, true);
         return $this->redirectToRoute('user');
     }
