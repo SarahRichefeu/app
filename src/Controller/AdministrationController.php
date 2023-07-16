@@ -11,6 +11,7 @@ class AdministrationController extends AbstractController
     #[Route('/administration', name: 'administration')]
     public function index(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('administration/index.html.twig', [
             'controller_name' => 'AdministrationController',
         ]);

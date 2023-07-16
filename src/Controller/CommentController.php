@@ -46,6 +46,7 @@ class CommentController extends AbstractController
     #[Route('/comment/verification', name: 'comment_verification')]
     public function approuve(CommentRepository $repo): Response 
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $comments = $repo->findBy(['approuved' => false]);
 
         return $this->render('comment/verification.html.twig', [
@@ -57,6 +58,7 @@ class CommentController extends AbstractController
     #[Route('/comment/{id}/approuve', name: 'comment_approve')]
     public function approuveComment(Comment $comment, CommentRepository $repo): Response 
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $comment->setApprouved(true);
         $repo->save($comment, true);
 
@@ -66,6 +68,7 @@ class CommentController extends AbstractController
     #[Route('/comment/{id}/delete', name: 'comment_delete')]   
     public function delete(Comment $comment, CommentRepository $repo): Response 
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $repo->remove($comment, true);
 
         return $this->redirectToRoute('comment_verification');

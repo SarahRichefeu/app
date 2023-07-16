@@ -64,8 +64,9 @@ class CatalogueController extends AbstractController
 
 
     #[Route('catalogue/add', name:"car_add")]
-    public function add(Request $request, CarRepository $repo, SluggerInterface $slugger): Response {
-
+    public function add(Request $request, CarRepository $repo, SluggerInterface $slugger): Response 
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $car = new Car();
         $formCar = $this->createForm(CarType::class, $car);
         // faire un createForm de carImage pour le carrousel
@@ -111,6 +112,7 @@ class CatalogueController extends AbstractController
     #[Route('catalogue/{id}/edit', name:"car_edit", requirements:['id' => '\d+'])]
     public function edit(Car $car, Request $request, CarRepository $repo, SluggerInterface $slugger): Response 
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $formCar = $this->createForm(CarType::class, $car);
         $formCar->handleRequest($request);
 
@@ -151,6 +153,7 @@ class CatalogueController extends AbstractController
     #[Route('catalogue/{id}/delete', name:"car_delete", requirements:['id' => '\d+'])]
     public function delete(Car $car, CarRepository $repo): Response 
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $repo->remove($car, true);
         return $this->redirectToRoute('catalogue');
     }
