@@ -5,11 +5,11 @@
 {% block body %}
 
     <div class="container mt-5">
-        <h1>Ajouter un employé</h1>
+        <h1>{{ title }}</h1>
         <p class="mb-5">Veuillez renseigner votre nom et prénom, ainsi qu'une adresse email valide et un mot de passe.</p>
         {{ form_start(form) }}
             {{ form_row(form) }}
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button type="submit" class="btn btn-primary">{{ btn }}</button>
         {{ form_end(form) }}
     </div>
 

@@ -54,9 +54,14 @@ class ServiceController extends AbstractController
             return $this->redirectToRoute('services');
         }
 
+        $title = "Modifier une prestation";
+        $btn = "Modifier";
+
         return $this->render('service/service_form.html.twig', [
             'controller_name' => 'ServiceController',
-            'formView' => $form->createView()
+            'formView' => $form->createView(),
+            'title' => $title,
+            'btn' => $btn
         ]);
 
     }
@@ -92,9 +97,14 @@ class ServiceController extends AbstractController
             return $this->redirectToRoute('services');
         }
 
+        $title = "Ajouter une prestation";
+        $btn = "Ajouter";
+
         return $this->render('service/service_form.html.twig', [
             'controller_name' => 'ServiceController',
             'formView' => $form->createView(),
+            'title' => $title,
+            'btn' => $btn
         ]);
 
     }
