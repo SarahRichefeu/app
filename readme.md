@@ -11,6 +11,8 @@ Assurez-vous d'avoir installé :
     - Git
     - Symfony CLI
 
+Pour vérifier que votre machine peut faire tourner un projet symfony, utilisez la commande symfony check:requirements
+
 Pour le récupérer, effecutez les commandes suivantes dans une console placée dans le dossier dans lequel vous voulez importer le projet.
 
     - git clone https://github.com/SarahRichefeu/v.parrotGarage.git
@@ -35,11 +37,13 @@ Puis exécuter les migrations présentes avec :
 
     - symfony console doctrine:migrations:migrate
 
-Pour inclure la fixture  :
+Pour inclure la fixture :
 
-    - symfony console doctrine:fixtures:load
+    - symfony console doctrine:fixtures:load --append
 
 Vous pouvez alors lancer le serveur symfony avec :
 
     - symfony serve
+
+
 
