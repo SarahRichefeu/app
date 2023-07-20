@@ -15,6 +15,10 @@ Pour le récupérer, effecutez les commandes suivantes dans une console placée 
 
     - git clone https://github.com/SarahRichefeu/v.parrotGarage.git
 
+
+Placez vous dans le bon dossier avec la commande : 
+    - cd v.parrotGarage
+
 Listez et vérifiez que vous êtes bien placés sur la branche master
 
 Ensuite, installez toutes les dépendances nécessaires au bon fonctionnement de l'application:
