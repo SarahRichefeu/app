@@ -45,5 +45,5 @@ Vous pouvez alors lancer le serveur symfony avec :
 
     - symfony serve
 
-
+J'ai ajouté un fichier sql contenant des données utiles pour l'affichage du site. Exécutez-les dans l'ordre. Pour le reste des fonctionnalités, pour une question de sécurité, il vaut mieux passer directement par l'interface du site.
 
