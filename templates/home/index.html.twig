@@ -19,7 +19,9 @@
                     </div>
                     <div class="col-lg-8 p-4">
                         <div id="about" class="card border-primary">
-                            <h2 class="text-center title mb-3">Vincent Parrot Garage</h2>  
+                            {% for gar in garage %}
+                                <h2 class="text-center title mb-3">{{ gar.name }}</h2> 
+                            {% endfor %}
                             <p>Fondateur de l'entreprise Vincent Parrot Garage, Vincent est passionné d'automobiles depuis l'enfance. Son père mécanique lui a appris tous les rouages du métier dès le plus jeune âge. Tout naturellement, après avoir fait des études dans le millieu automobile et mécanique, <span class="text-primary-emphasis">il ouvre sa boîte en 2020</span>. Aujourd'hui, il est entouré d'une <span class="text-primary-emphasis">équipe passionnée et dévouée</span>.</p>
                             <p>Confiez-nous vos projets ! Réparation, achat d'ancien véhicule, vente de véhicules, entretien ? N'hésitez pas !</p>
                         </div>

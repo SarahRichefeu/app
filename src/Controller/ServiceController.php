@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Service;
 use App\Form\ServiceType;
+use App\Repository\GarageRepository;
 use App\Repository\ServiceRepository;
+use App\Repository\ScheduleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,17 +17,19 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class ServiceController extends AbstractController
 {
     #[Route('/services', name: 'services')]
-    public function services(ServiceRepository $repo): Response
+    public function services(ServiceRepository $repo, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         return $this->render('service/services.html.twig', [
             'controller_name' => 'ServiceController',
-            'services' => $repo->findAll()
+            'services' => $repo->findAll(),
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
 
     }
 
     #[Route('/services/edit/{id}', name: 'services_edit', requirements: ['id' => '\d+'])]
-    public function editServices(Request $request, Service $service, ServiceRepository $repo, SluggerInterface $slugger): Response
+    public function editServices(Request $request, Service $service, ServiceRepository $repo, SluggerInterface $slugger, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(ServiceType::class, $service);
@@ -61,13 +65,15 @@ class ServiceController extends AbstractController
             'controller_name' => 'ServiceController',
             'formView' => $form->createView(),
             'title' => $title,
-            'btn' => $btn
+            'btn' => $btn,
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
 
     }
 
     #[Route('/services/add', name: 'services_add')]
-    public function addServices(Request $request, ServiceRepository $repo, SluggerInterface $slugger): Response
+    public function addServices(Request $request, ServiceRepository $repo, SluggerInterface $slugger, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $service = new Service();
@@ -104,25 +110,31 @@ class ServiceController extends AbstractController
             'controller_name' => 'ServiceController',
             'formView' => $form->createView(),
             'title' => $title,
-            'btn' => $btn
+            'btn' => $btn,
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
 
     }
 
     #[Route('/registration', name: 'registration')]
-    public function registration(): Response
+    public function registration(ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         return $this->render('service/registration.html.twig', [
             'controller_name' => 'ServiceController',
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 
 
     #[Route('/rachat', name: 'rachat')]
-    public function rachat(): Response
+    public function rachat(ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         return $this->render('service/rachat.html.twig', [
             'controller_name' => 'ServiceController',
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 

@@ -7,6 +7,8 @@ use App\Form\CarType;
 use App\Form\ContactType;
 use App\Repository\CarRepository;
 use App\Repository\FuelRepository;
+use App\Repository\GarageRepository;
+use App\Repository\ScheduleRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -20,17 +22,19 @@ class CatalogueController extends AbstractController
 {
 
     #[Route('/catalogue', name: 'catalogue')]
-    public function index(CarRepository $repository, FuelRepository $fuelRepo): Response
+    public function index(CarRepository $repository, FuelRepository $fuelRepo, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         return $this->render('catalogue/index.html.twig', [
             'controller_name' => 'CatalogueController',
             'cars' => $repository->findAll(),
             'fuels' => $fuelRepo->findAll(),
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 
     #[Route('catalogue/{id}', name:"car_show", requirements:['id' => '\d+'])]
-    public function show(Car $car, Request $request, MailerInterface $mailer): Response 
+    public function show(Car $car, Request $request, MailerInterface $mailer, ScheduleRepository $schedule, GarageRepository $garage): Response 
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
@@ -59,12 +63,14 @@ class CatalogueController extends AbstractController
             'controller_name' => 'CatalogueShow',
             'car' => $car,
             'form' => $form->createView(),
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 
 
     #[Route('catalogue/add', name:"car_add")]
-    public function add(Request $request, CarRepository $repo, SluggerInterface $slugger): Response 
+    public function add(Request $request, CarRepository $repo, SluggerInterface $slugger, ScheduleRepository $schedule, GarageRepository $garage): Response 
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $car = new Car();
@@ -104,13 +110,15 @@ class CatalogueController extends AbstractController
             'controller_name' => 'CatalogueAdd',
             'formCar' => $formCar->createView(),
             'title' => $title, 
-            'btn' => $btn
+            'btn' => $btn,
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 
 
     #[Route('catalogue/{id}/edit', name:"car_edit", requirements:['id' => '\d+'])]
-    public function edit(Car $car, Request $request, CarRepository $repo, SluggerInterface $slugger): Response 
+    public function edit(Car $car, Request $request, CarRepository $repo, SluggerInterface $slugger, ScheduleRepository $schedule, GarageRepository $garage): Response 
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $formCar = $this->createForm(CarType::class, $car);
@@ -146,7 +154,9 @@ class CatalogueController extends AbstractController
             'controller_name' => 'CatalogueEdit',
             'formCar' => $formCar->createView(),
             'title' => $title,
-            'btn' => $btn
+            'btn' => $btn,
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 

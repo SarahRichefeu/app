@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\CommentRepository;
+use App\Repository\GarageRepository;
+use App\Repository\ScheduleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(CommentRepository $repo): Response
+    public function index(CommentRepository $repo, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
 
         return $this->render('home/index.html.twig', [
@@ -19,24 +21,22 @@ class HomeController extends AbstractController
                 ['approuved' => true],
                 ['dateAdded' => 'DESC'],
                 3
-                )
+            ),
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 
 
 
-    #[Route('/politique-de-confidentalite', name: 'cgu')]    
-    public function cgu(): Response
+    #[Route('/cgu', name: 'cgu')]    
+    public function cgu(ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         return $this->render('home/cgu.html.twig', [
             'controller_name' => 'HomeController',
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
-    #[Route('/mentions-legales', name: 'legals')]
-    public function legals(): Response
-    {
-        return $this->render('home/legals.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+
 }

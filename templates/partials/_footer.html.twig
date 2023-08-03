@@ -8,23 +8,32 @@
         <div class="col mb-3"></div>
 
         <div class="col mb-3">
-            <p class="nav flex-column p-0 text-body-secondary">
-                Ouvert du lundi au vendredi de 8h à 12h et de 14h à 18h
-                  Le samedi de 8h à 12h 
-            </p>
+            <table>
+                <tbody>
+                    {% for hour in hours %}
+                    <tr>
+                        <td>{{ hour.day }} : </td>
+                        <td>{{ hour.morning }} / </td>
+                        <td> {{ hour.afternoon }}</td>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
 
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2 p-0 text-body-secondary">07 33 01 02 03</li>
-                <li class="nav-item mb-2 p-0 text-body-secondary">33 avenue Saint Jean, 31000 Toulouse</li>
+                {% for gar in garage %}
+                <li class="nav-item mb-2 p-0 text-body-secondary">{{ gar.phone }}</li>
+                <li class="nav-item mb-2 p-0 text-body-secondary">{{ gar.address }}</li>
+                {% endfor %}
             </ul>
         </div>
 
         <div class="col mb-3">
             <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Mentions légales</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Politique de confidentialité</a></li>
+                <li class="nav-item mb-2"><a href="{{ path('cgu') }}" class="nav-link p-0 text-body-secondary">Politique de confidentialité et mentions légales</a></li>
             </ul>
             {% if app.user == null %}
             <div class="connexion">

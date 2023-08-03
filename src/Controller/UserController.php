@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\GarageRepository;
+use App\Repository\ScheduleRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,17 +16,19 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserController extends AbstractController
 {
     #[Route('/user', name: 'user')]
-    public function index(UserRepository $repo): Response
+    public function index(UserRepository $repo, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         return $this->render('user/index.html.twig', [
             'controller_name' => 'userController',
-            'users' => $repo->findByRole('ROLE_USER')
+            'users' => $repo->findByRole('ROLE_USER'),
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 
     #[Route('/user/new', name: 'new_user')]
-    public function new(Request $request, UserRepository $repo, UserPasswordHasherInterface $passwordHasher): Response
+    public function new(Request $request, UserRepository $repo, UserPasswordHasherInterface $passwordHasher, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $user = new User();
@@ -45,12 +49,14 @@ class UserController extends AbstractController
             'controller_name' => 'userController',
             'form' => $form->createView(),
             'title' => $title,
-            'btn' => $btn
+            'btn' => $btn,
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 
     #[Route('/user/edit/{id}', name: 'edit_user', requirements: ['id' => '\d+'])]
-    public function edit(Request $request, User $user, UserRepository $repo, UserPasswordHasherInterface $passwordHasher): Response
+    public function edit(Request $request, User $user, UserRepository $repo, UserPasswordHasherInterface $passwordHasher, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(UserType::class, $user);
@@ -69,7 +75,9 @@ class UserController extends AbstractController
             'controller_name' => 'userController',
             'form' => $form->createView(),
             'title' => $title,
-            'btn' => $btn
+            'btn' => $btn,
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 

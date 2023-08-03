@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\GarageRepository;
+use App\Repository\ScheduleRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -13,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ContactController extends AbstractController
 {
     #[Route('/contact', name: 'contact')]
-    public function index(Request $request, MailerInterface $mailer): Response
+    public function index(Request $request, MailerInterface $mailer, ScheduleRepository $schedule, GarageRepository $garage): Response
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
@@ -39,6 +41,8 @@ class ContactController extends AbstractController
         return $this->render('contact/index.html.twig', [
             'controller_name' => 'ContactController',
             'formView' => $form->createView(),
+            'hours' => $schedule->findAll(),
+            'garage' => $garage->findAll(),
         ]);
     }
 }
